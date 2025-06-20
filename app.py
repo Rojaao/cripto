@@ -7,7 +7,15 @@ st.title("🔁 Robô de Arbitragem Cripto - Modo Simulação")
 
 st.markdown("Monitora preços em tempo real nas principais exchanges e mostra oportunidades de arbitragem.")
 
-pares = ["BTC/USDT", "ETH/USDT", "BNB/USDT"]
+# Pares comuns suportados nas exchanges principais
+pares = [
+    "BTC/USDT",
+    "ETH/USDT",
+    "BNB/USDT",
+    "XRP/USDT",
+    "DOGE/USDT"
+]
+
 intervalo = st.slider("⏱️ Intervalo de atualização (segundos)", 5, 60, 10)
 
 if st.button("🔍 Buscar oportunidades agora"):
