@@ -1,4 +1,4 @@
-# Robô Cripto - Painel de Simulação
+# Robô Cripto v2 - Simulação Avançada com Streamlit
 
 ### Como executar:
 
@@ -8,8 +8,7 @@
 2. Execute o painel:
    streamlit run app.py
 
-3. O painel simula operações com R$50 em BTC, ETH e BNB
-   mostrando resultados fictícios para avaliação de lógica.
-
-Você pode expandir com dados reais, conectar à API da Binance,
-e aplicar estratégias reais no backend.
+3. O painel exibe:
+   - Simulação de operações com BTC, ETH e BNB
+   - Valor fixo de R$50 por operação
+   - Resultado, taxa de acerto e performance total
