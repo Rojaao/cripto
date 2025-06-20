@@ -10,7 +10,7 @@ def buscar_oportunidades(pares):
         precos = {}
         for nome, ex in exchanges.items():
             ask, bid = obter_preco(ex, par)
-            if ask and bid:
+            if ask is not None and bid is not None:
                 precos[nome] = {"ask": ask, "bid": bid}
             else:
                 print(f"[LOG] Falha ao obter preços para {par} na {nome}")
@@ -20,6 +20,10 @@ def buscar_oportunidades(pares):
                 if ex_compra != ex_venda:
                     preco_compra = precos[ex_compra]["ask"]
                     preco_venda = precos[ex_venda]["bid"]
+
+                    if preco_compra is None or preco_venda is None:
+                        continue
+
                     lucro_bruto = preco_venda - preco_compra
                     lucro_percent = (lucro_bruto / preco_compra - 2 * TAXA) * 100
 
