@@ -8,8 +8,8 @@ st.title("🔁 Robô de Arbitragem Cripto - Atualização Automática")
 
 st.markdown("Monitoramento automático em tempo real das principais exchanges.")
 
-# Pares comuns e líquidos nas exchanges Binance, Bybit, OKX, KuCoin, Gate.io
 pares = [
+    # pares comuns USDT
     "BTC/USDT",
     "ETH/USDT",
     "BNB/USDT",
@@ -19,7 +19,25 @@ pares = [
     "SOL/USDT",
     "MATIC/USDT",
     "LTC/USDT",
-    "DOT/USDT"
+    "DOT/USDT",
+
+    # pares BNB base
+    "BNB/BTC",
+    "BNB/ETH",
+    "BNB/ADA",
+    "BNB/DOGE",
+    "BNB/XRP",
+    "BNB/SOL",
+    "BNB/MATIC",
+    "BNB/LTC",
+    "BNB/DOT",
+
+    # pares BNB cotação
+    "BTC/BNB",
+    "ETH/BNB",
+    "ADA/BNB",
+    "DOGE/BNB",
+    "XRP/BNB"
 ]
 
 intervalo = st.slider("⏱️ Intervalo de atualização (segundos)", 5, 60, 10)
