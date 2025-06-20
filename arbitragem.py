@@ -3,6 +3,13 @@ import pandas as pd
 
 TAXA = 0.001  # taxa média estimada por operação (0,1%)
 
+def is_number(value):
+    try:
+        float(value)
+        return True
+    except:
+        return False
+
 def buscar_oportunidades(pares):
     resultados = []
 
@@ -21,8 +28,11 @@ def buscar_oportunidades(pares):
                     preco_compra = precos[ex_compra]["ask"]
                     preco_venda = precos[ex_venda]["bid"]
 
-                    if preco_compra is None or preco_venda is None:
+                    if not (is_number(preco_compra) and is_number(preco_venda)):
                         continue
+
+                    preco_compra = float(preco_compra)
+                    preco_venda = float(preco_venda)
 
                     lucro_bruto = preco_venda - preco_compra
                     lucro_percent = (lucro_bruto / preco_compra - 2 * TAXA) * 100
