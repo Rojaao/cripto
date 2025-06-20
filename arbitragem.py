@@ -1,7 +1,6 @@
 from exchanges import exchanges, obter_preco
 import pandas as pd
 
-# Taxa média estimada por transação (0.1%)
 TAXA = 0.001
 
 def buscar_oportunidades(pares):
@@ -13,6 +12,8 @@ def buscar_oportunidades(pares):
             ask, bid = obter_preco(ex, par)
             if ask and bid:
                 precos[nome] = {"ask": ask, "bid": bid}
+            else:
+                print(f"[LOG] Falha ao obter preços para {par} na {nome}")
 
         for ex_compra in precos:
             for ex_venda in precos:

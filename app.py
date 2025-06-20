@@ -12,6 +12,9 @@ intervalo = st.slider("⏱️ Intervalo de atualização (segundos)", 5, 60, 10)
 
 if st.button("🔍 Buscar oportunidades agora"):
     df = buscar_oportunidades(pares)
-    st.dataframe(df.sort_values("lucro_percent", ascending=False), use_container_width=True)
+    if not df.empty:
+        st.dataframe(df.sort_values("lucro_percent", ascending=False), use_container_width=True)
+    else:
+        st.warning("Nenhuma oportunidade de arbitragem encontrada no momento. Verifique pares ou conexão com exchanges.")
 else:
     st.info("Clique em 'Buscar oportunidades agora' para iniciar a análise.")
