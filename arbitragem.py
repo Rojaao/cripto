@@ -1,7 +1,7 @@
 from exchanges import exchanges, obter_preco
 import pandas as pd
 
-TAXA = 0.001
+TAXA = 0.001  # taxa média estimada por operação (0,1%)
 
 def buscar_oportunidades(pares):
     resultados = []
@@ -21,7 +21,7 @@ def buscar_oportunidades(pares):
                     preco_compra = precos[ex_compra]["ask"]
                     preco_venda = precos[ex_venda]["bid"]
                     lucro_bruto = preco_venda - preco_compra
-                    lucro_percent = (lucro_bruto / preco_compra - 2*TAXA) * 100
+                    lucro_percent = (lucro_bruto / preco_compra - 2 * TAXA) * 100
 
                     if lucro_percent > 0:
                         resultados.append({
@@ -34,3 +34,17 @@ def buscar_oportunidades(pares):
                         })
 
     return pd.DataFrame(resultados)
+
+
+def coletar_precos_completos(pares):
+    dados = []
+    for par in pares:
+        for nome, ex in exchanges.items():
+            ask, bid = obter_preco(ex, par)
+            dados.append({
+                "par": par,
+                "exchange": nome,
+                "ask": ask,
+                "bid": bid
+            })
+    return pd.DataFrame(dados)
